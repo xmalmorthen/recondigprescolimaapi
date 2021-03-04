@@ -1,0 +1,1126 @@
+﻿{
+  "API STRUCTURE": {
+    "Api": {
+      "Uid": "formato 00000000-0000-0000-0000-000000000000 | ejemplo [ 72c0d8ba-4478-4dc8-8c35-d250f8493e08 ]",
+      "Status": {
+        "Code": " formato numérico | ejemplo [ 200 ]",
+        "Message": "formato alfanumérico | ejemplo [ Petición generada correctamente ]"
+      },
+      "Date": "formato dd/mm/aaaa | ejemplo [ 17/02/2021 ]",
+      "Time": "formato hh:mm:ss | ejemplo [ 12:11:52 ]",
+      "ResponseTime": "formato 00000000-0000-0000-0000-000000000000: xxx segundos | ejemplo [ 72c0d8ba-4478-4dc8-8c35-d250f8493e08: 0.0068372 segundos ]"
+    },
+    "Response": "Estructura dinámica"
+  },
+  "API METHODS": [
+    {
+      "authentications": [
+        {
+          "authenticate": {
+            "description": "Método para la autenticación y generación de token para peticiones que requieran autenticación BEARER TOKEN",
+            "invocation method": "POST",
+            "route": "https://{server}/api/login/authenticate",
+            "authorization": "none",
+            "params": [
+              {
+                "x-www-form-urlencoded": [
+                  {
+                    "paramName": "Username",
+                    "description": "Nombre de ususario",
+                    "format": "Alfanumérico",
+                    "required": "Si"
+                  },
+                  {
+                    "paramName": "Password",
+                    "description": "Contraseña de ususario",
+                    "format": "Alfanumérico",
+                    "required": "Si"
+                  }
+                ]
+              }
+            ],            
+            "Response": [
+              { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+              { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+            ]
+          }
+        }
+      ],
+      "utlis": [
+        {
+          "token/info": {
+            "description": "Método para verificar el estado del Token",
+            "invocation method": "GET",
+            "route": "https://{server}/api/utils/token/info",
+            "authorization": "none",
+            "params": [
+              {
+                "url": [
+                  {
+                    "paramName": "token",
+                    "description": "Cadena de token",
+                    "format": "Alfanumérico"
+                  }
+                ]
+              }
+            ],
+            "Response": [
+              { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+              { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+
+            ]
+          }
+        },
+        {
+          "hash/md5": {
+            "description": "Método para calcular el HASH MD5 de un archivo específico",
+            "invocation method": "POST",
+            "route": "https://{server}/api/utils/hash/md5",
+            "authorization": "none",
+            "params": [
+              {
+                "form-data [multipart]": [
+                  {
+                    "paramName": "file",
+                    "description": "Ubicación física del archivo",
+                    "format": "Alfanumérico"
+                  }
+                ]
+              }
+            ],
+            "Response": [
+              { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+              { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+            ]
+          }
+        }
+      ],
+      "catalogs": [
+        {
+          "persons": [
+            {
+              "list": {
+                "description": "Método para obtener la lista de personas",
+                "invocation method": "GET",
+                "route": "https://{server}/api/admin/persons",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "skip",
+                        "description": "Cantidad de registros a ignorar",
+                        "format": "Numérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "take",
+                        "description": "Cantidad de registros a tomar",
+                        "format": "Numérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "filter",
+                        "description": "Filtro para el resultado",
+                        "format": "Alfanumérico",
+                        "required": "No"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            },
+            {
+              "by Id": {
+                "description": "Método para obtener registro de porsona por identificador",
+                "invocation method": "GET",
+                "route": "https://{server}/api/admin/person",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "id",
+                        "description": "Identificador único de la persona",
+                        "format": "Numérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "users": [
+            {
+              "list": {
+                "description": "Método para obtener la lista de usuarios",
+                "invocation method": "GET",
+                "route": "https://{server}/api/admin/users",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "skip",
+                        "description": "Cantidad de registros a ignorar",
+                        "format": "Numérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "take",
+                        "description": "Cantidad de registros a tomar",
+                        "format": "Numérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "filter",
+                        "description": "Filtro para el resultado",
+                        "format": "Alfanumérico",
+                        "required": "No"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            },
+            {
+              "by Id": {
+                "description": "Método para obtener registro de usuario por identificador",
+                "invocation method": "GET",
+                "route": "https://{server}/api/admin/user",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "id",
+                        "description": "Identificador único del usuario",
+                        "format": "Numérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "roles": [
+            {
+              "list": {
+                "description": "Método para obtener la lista de roles",
+                "invocation method": "GET",
+                "route": "https://{server}/api/admin/roles",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "skip",
+                        "description": "Cantidad de registros a ignorar",
+                        "format": "Numérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "take",
+                        "description": "Cantidad de registros a tomar",
+                        "format": "Numérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "filter",
+                        "description": "Filtro para el resultado",
+                        "format": "Alfanumérico",
+                        "required": "No"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            },
+            {
+              "by Id": {
+                "description": "Método para obtener registro de rol por identificador",
+                "invocation method": "GET",
+                "route": "https://{server}/api/admin/rol",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "id",
+                        "description": "Identificador único del rol",
+                        "format": "Numérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "estados": [
+            {
+              "list": {
+                "description": "Método para obtener la lista de entidades de la república",
+                "invocation method": "GET",
+                "route": "https://{server}/api/catalogs/estados",
+                "authorization": "BEARER TOKEN",
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            },
+            {
+              "by Id": {
+                "description": "Método para obtener registro de entidad por identificador",
+                "invocation method": "GET",
+                "route": "https://{server}/api/catalogs/estado",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "cve_agee",
+                        "description": "Identificador único de la entidad",
+                        "format": "Numérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            },
+            {
+              "by Name": {
+                "description": "Método para obtener registro de entidad por nombre",
+                "invocation method": "GET",
+                "route": "https://{server}/api/catalogs/estado/buscar",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "estado",
+                        "description": "Cadena de texto a buscar para la entidad",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "municipios": [
+            {
+              "list": {
+                "description": "Método para obtener la lista de municipios",
+                "invocation method": "GET",
+                "route": "https://{server}/api/catalogs/municipios",
+                "authorization": "BEARER TOKEN",
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            },
+            {
+              "by Id": {
+                "description": "Método para obtener registro de municipio por identificador",
+                "invocation method": "GET",
+                "route": "https://{server}/api/catalogs/municipio",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "cve_agee",
+                        "description": "Identificador único de la entidad",
+                        "format": "Numérico",
+                        "required": "Si"
+                      },
+                      {
+                        "paramName": "cve_agem",
+                        "description": "Identificador único del municipio",
+                        "format": "Numérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            },
+            {
+              "by Name": {
+                "description": "Método para obtener registro de entidad por nombre",
+                "invocation method": "GET",
+                "route": "https://{server}/api/catalogs/municipio/buscar",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "cve_agee",
+                        "description": "Identificador único de la entidad",
+                        "format": "Numérico",
+                        "required": "Si"
+                      },
+                      {
+                        "paramName": "municipio",
+                        "description": "Cadena de texto a buscar para el municipio",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "delitos": [
+            {
+              "list": {
+                "description": "Método para obtener la lista de delitos",
+                "invocation method": "GET",
+                "route": "https://{server}/api/admin/crimes",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "skip",
+                        "description": "Cantidad de registros a ignorar",
+                        "format": "Numérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "take",
+                        "description": "Cantidad de registros a tomar",
+                        "format": "Numérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "filter",
+                        "description": "Filtro para el resultado",
+                        "format": "Alfanumérico",
+                        "required": "No"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            },
+            {
+              "by Id": {
+                "description": "Método para obtener registro de delito por identificador",
+                "invocation method": "GET",
+                "route": "https://{server}/api/admin/crime",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "id",
+                        "description": "Identificador único del delito",
+                        "format": "Numérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "juzgados": [
+            {
+              "list": {
+                "description": "Método para obtener la lista de juzgados",
+                "invocation method": "GET",
+                "route": "https://{server}/api/admin/courts",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "skip",
+                        "description": "Cantidad de registros a ignorar",
+                        "format": "Numérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "take",
+                        "description": "Cantidad de registros a tomar",
+                        "format": "Numérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "filter",
+                        "description": "Filtro para el resultado",
+                        "format": "Alfanumérico",
+                        "required": "No"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            },
+            {
+              "by Id": {
+                "description": "Método para obtener registro de juzgado por identificador",
+                "invocation method": "GET",
+                "route": "https://{server}/api/admin/court",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "id",
+                        "description": "Identificador único del juzgado",
+                        "format": "Numérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "libertades": [
+            {
+              "list": {
+                "description": "Método para obtener la lista de libertades",
+                "invocation method": "GET",
+                "route": "https://{server}/api/admin/freedoms",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "skip",
+                        "description": "Cantidad de registros a ignorar",
+                        "format": "Numérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "take",
+                        "description": "Cantidad de registros a tomar",
+                        "format": "Numérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "filter",
+                        "description": "Filtro para el resultado",
+                        "format": "Alfanumérico",
+                        "required": "No"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            },
+            {
+              "by Id": {
+                "description": "Método para obtener registro de libertad por identificador",
+                "invocation method": "GET",
+                "route": "https://{server}/api/admin/freedom",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "id",
+                        "description": "Identificador único de la libertad",
+                        "format": "Numérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "salas": [
+            {
+              "list": {
+                "description": "Método para obtener la lista de salas",
+                "invocation method": "GET",
+                "route": "https://{server}/api/admin/rooms",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "skip",
+                        "description": "Cantidad de registros a ignorar",
+                        "format": "Numérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "take",
+                        "description": "Cantidad de registros a tomar",
+                        "format": "Numérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "filter",
+                        "description": "Filtro para el resultado",
+                        "format": "Alfanumérico",
+                        "required": "No"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            },
+            {
+              "by Id": {
+                "description": "Método para obtener registro de sala por identificador",
+                "invocation method": "GET",
+                "route": "https://{server}/api/admin/room",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "id",
+                        "description": "Identificador único de la sala",
+                        "format": "Numérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "management": [
+        {
+          "persons": [
+            {
+              "insert": {
+                "description": "Método para registrar persona",
+                "invocation method": "POST",
+                "route": "https://{server}/api/admin/person",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "raw JSON": [
+                      {
+                        "paramName": "noCtrl",
+                        "description": "Número de control",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      },
+                      {
+                        "paramName": "curp",
+                        "description": "Clave CURP",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      },
+                      {
+                        "paramName": "tel",
+                        "description": "Número de teléfono fijo",
+                        "format": "Alfanumérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "cel",
+                        "description": "Número de celular",
+                        "format": "Numérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "mail",
+                        "description": "Correo electrónico",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              },
+              "update": {
+                "description": "Método para actualizar registro de persona",
+                "invocation method": "PATCH",
+                "route": "https://{server}/api/admin/person",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "raw JSON": [
+                      {
+                        "paramName": "id",
+                        "description": "Identificador único de registro",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      },
+                      {
+                        "paramName": "noCtrl",
+                        "description": "Número de control",
+                        "format": "Alfanumérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "curp",
+                        "description": "Clave CURP",
+                        "format": "Alfanumérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "tel",
+                        "description": "Número de teléfono fijo",
+                        "format": "Alfanumérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "cel",
+                        "description": "Número de celular",
+                        "format": "Numérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "mail",
+                        "description": "Correo electrónico",
+                        "format": "Alfanumérico",
+                        "required": "No"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "users": [
+            {
+              "insert": {
+                "description": "Método para registrar usuario",
+                "invocation method": "POST",
+                "route": "https://{server}/api/admin/user",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "raw JSON": [
+                      {
+                        "paramName": "idPerson",
+                        "description": "Identificador único de la persona",
+                        "format": "Numérico",
+                        "required": "Si"
+                      },
+                      {
+                        "paramName": "idDepto",
+                        "description": "Identificador único del departamento",
+                        "format": "Nuérico",
+                        "required": "Si"
+                      },
+                      {
+                        "paramName": "username",
+                        "description": "Nombre de usuario",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      },
+                      {
+                        "paramName": "password",
+                        "description": "Contraseña",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      },
+                      {
+                        "paramName": "idRoles",
+                        "description": "Arreglo de identificador(es) único(s) de roles",
+                        "format": "Arreglo de valores numéricos",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              },
+              "update": {
+                "description": "Método para actualizar registro de usuario",
+                "invocation method": "PATCH",
+                "route": "https://{server}/api/admin/user",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "raw JSON": [
+                      {
+                        "paramName": "id",
+                        "description": "Identificador único de registro",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      },
+                      {
+                        "paramName": "idPerson",
+                        "description": "Identificador único de la persona",
+                        "format": "Numérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "idDepto",
+                        "description": "Identificador único del departamento",
+                        "format": "Nuérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "username",
+                        "description": "Nombre de usuario",
+                        "format": "Alfanumérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "password",
+                        "description": "Contraseña",
+                        "format": "Alfanumérico",
+                        "required": "No"
+                      },
+                      {
+                        "paramName": "idRoles",
+                        "description": "Arreglo de identificador(es) único(s) de roles",
+                        "format": "Arreglo de valores numéricos",
+                        "required": "No"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "delitos": [
+            {
+              "insert": {
+                "description": "Método para registrar delito",
+                "invocation method": "POST",
+                "route": "https://{server}/api/admin/crime",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "raw JSON": [
+                      {
+                        "paramName": "descrip",
+                        "description": "Descripción del delito",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              },
+              "update": {
+                "description": "Método para actualizar registro de delito",
+                "invocation method": "PATCH",
+                "route": "https://{server}/api/admin/crime",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "raw JSON": [
+                      {
+                        "paramName": "id",
+                        "description": "Identificador único de registro",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      },
+                      {
+                        "paramName": "descrip",
+                        "description": "Descripción del delito",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "juzgados": [
+            {
+              "insert": {
+                "description": "Método para registrar juzgado",
+                "invocation method": "POST",
+                "route": "https://{server}/api/admin/court",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "raw JSON": [
+                      {
+                        "paramName": "descrip",
+                        "description": "Descripción del juzgado",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              },
+              "update": {
+                "description": "Método para actualizar registro de juzgado",
+                "invocation method": "PATCH",
+                "route": "https://{server}/api/admin/court",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "raw JSON": [
+                      {
+                        "paramName": "id",
+                        "description": "Identificador único de registro",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      },
+                      {
+                        "paramName": "descrip",
+                        "description": "Descripción del juzgado",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "libertades": [
+            {
+              "insert": {
+                "description": "Método para registrar libertad",
+                "invocation method": "POST",
+                "route": "https://{server}/api/admin/freedom",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "raw JSON": [
+                      {
+                        "paramName": "descrip",
+                        "description": "Descripción de la libertad",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              },
+              "update": {
+                "description": "Método para actualizar registro de libertad",
+                "invocation method": "PATCH",
+                "route": "https://{server}/api/admin/freedom",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "raw JSON": [
+                      {
+                        "paramName": "id",
+                        "description": "Identificador único de registro",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      },
+                      {
+                        "paramName": "descrip",
+                        "description": "Descripción de la libertad",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "salas": [
+            {
+              "insert": {
+                "description": "Método para registrar sala",
+                "invocation method": "POST",
+                "route": "https://{server}/api/admin/room",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "raw JSON": [
+                      {
+                        "paramName": "descrip",
+                        "description": "Descripción de la sala",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              },
+              "update": {
+                "description": "Método para actualizar registro de sala",
+                "invocation method": "PATCH",
+                "route": "https://{server}/api/admin/room",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "raw JSON": [
+                      {
+                        "paramName": "id",
+                        "description": "Identificador único de registro",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      },
+                      {
+                        "paramName": "descrip",
+                        "description": "Descripción de la sala",
+                        "format": "Alfanumérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+
+    }
+    
+  ]
+}
