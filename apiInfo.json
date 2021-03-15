@@ -683,6 +683,47 @@
               }
             }
           ]
+        },
+        {
+          "estatus": [
+            {
+              "list": {
+                "description": "Método para obtener la lista de estatus de espediente",
+                "invocation method": "GET",
+                "route": "https://{server}/api/expedientCatalogs/status",
+                "authorization": "BEARER TOKEN",
+                "params": [],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            },
+            {
+              "by Id": {
+                "description": "Método para obtener registro de sala por identificador",
+                "invocation method": "GET",
+                "route": "https://{server}/api/admin/room",
+                "authorization": "BEARER TOKEN",
+                "params": [
+                  {
+                    "url": [
+                      {
+                        "paramName": "id",
+                        "description": "Identificador único de la sala",
+                        "format": "Numérico",
+                        "required": "Si"
+                      }
+                    ]
+                  }
+                ],
+                "Response": [
+                  { "Api": "Api [ Estructura Api => ver seccíón \"API STRUCTURE\" ]" },
+                  { "Response": "Response [ Estructura Response => ver seccíón \"API STRUCTURE\" ]" }
+                ]
+              }
+            }
+          ]
         }
       ],
       "management": [
